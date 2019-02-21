@@ -9,12 +9,10 @@ package assignment4;
  */
 public class Cooperator extends Organism{
 	
-	String name; 
 	double cooperationP;
 	
-	public Cooperator(String name) {
+	public Cooperator() {
 		super();
-		this.name = name;
 		this.cooperationP = 1; 
 	}
 	
@@ -25,12 +23,18 @@ public class Cooperator extends Organism{
 	
 	@Override 
 	public Organism reproduce() {
-		return new Cooperator(this.name);
+		this.energy = 0;
+		return new Cooperator();
 	}
 	
 	@Override
 	public double getCooperationProbability() {
 		return this.cooperationP;
+	}
+	
+	@Override 
+	public boolean cooperates() {
+		return true;
 	}
 	
 

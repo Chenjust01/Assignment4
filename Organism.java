@@ -16,10 +16,6 @@ public class Organism {
 
 	public void update() {
 		this.energy++;
-		if (this.energy > 10) {
-			this.reproduce();
-			this.energy = 0;
-		}
 	}
 
 	public int getEnergy() {

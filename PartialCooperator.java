@@ -2,20 +2,20 @@
  * 
  */
 package assignment4;
-
+import java.util.Random;
 /**
  * @author chenjust
  *
  */
 public class PartialCooperator extends Organism{
-	
-	String name; 
+
 	double cooperationP;
 	
-	public PartialCooperator(String name) {
+	public PartialCooperator() {
 		super();
-		this.name = name;
-		this.cooperationP = 0.5; 
+		Random randomGenerator = new Random();
+		int random = randomGenerator.nextInt(2);
+		this.cooperationP = random; 
 	}
 	
 	@Override
@@ -25,7 +25,8 @@ public class PartialCooperator extends Organism{
 	
 	@Override 
 	public Organism reproduce() {
-		return new PartialCooperator(this.name);
+		this.energy = 0;
+		return new PartialCooperator();
 	}
 	
 	@Override

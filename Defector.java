@@ -9,12 +9,10 @@ package assignment4;
  */
 public class Defector extends Organism{
 	
-	String name; 
 	double cooperationP;
 	
-	public Defector(String name) {
+	public Defector() {
 		super();
-		this.name = name;
 		this.cooperationP = 0; 
 	}
 	
@@ -25,7 +23,8 @@ public class Defector extends Organism{
 	
 	@Override 
 	public Organism reproduce() {
-		return new Defector(this.name);
+		this.energy = 0;
+		return new Defector();
 	}
 	
 	@Override

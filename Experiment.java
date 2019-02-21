@@ -12,10 +12,9 @@ public class Experiment {
     Pair<String,Integer>[] counts = popu.getPopulationCounts();
     pen.println("After " + Integer.parseInt(args[0]) + " iterations");
     pen.println("Cooperator = " + counts[0].getRight());
-    pen.println("Defector = " + counts[0].getRight());
-    pen.println("PartialCooperator = " + counts[0].getRight());
+    pen.println("Defector = " + counts[1].getRight());
+    pen.println("PartialCooperator = " + counts[2].getRight());
     pen.println("Mean Cooperation Probability = " + popu.calculateCooperationMean());
-
   }
   @SuppressWarnings({"unchecked"})
   public static Pair<String,Integer>[] pops(int numC,int numD, int numP) {
