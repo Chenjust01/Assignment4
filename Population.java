@@ -12,7 +12,9 @@ import java.util.Random;
  */
 public class Population {
 	Organism[] populations;
-
+	/**
+	 * Constructor  
+	 */
 	public Population(Pair<String, Integer>[] counts) throws IllegalArgumentException {
 		int counter = 0;
 		int sum = 0;
@@ -20,6 +22,7 @@ public class Population {
 			sum += counts[m].right;
 		}
 		this.populations = new Organism[sum];
+		// throw exception if there is Cooperator, Defector, and PartialCooperator 
 		for (int i = 0; i < counts.length; i++) {
 			for (int j = 0; j < counts[i].right; j++) {
 				if (counts[i].left.equals("Cooperator")) {
@@ -39,11 +42,16 @@ public class Population {
 
 	}
 
+	/**
+	 * update method for population
+	 */
 	public void update() {
+		// All the organism energy add by 1
 		for (int i = 0; i < this.populations.length; i++) {
 			this.populations[i].update();
 			if (this.populations[i].cooperates()) {
 				this.populations[i].decrementEnergy();
+				// random generator
 				ArrayList<Integer> numbers = new ArrayList<Integer>();
 				numbers.add(i);
 				Random randomGenerator = new Random();
@@ -65,6 +73,7 @@ public class Population {
 					}
 				}
 			}
+			// if energy is bigger than 10, the organism reproduces
 			if (this.populations[i].getEnergy() >= 10) {
 				Random randomGenerator = new Random();
 				int random = randomGenerator.nextInt(this.populations.length);
@@ -72,7 +81,9 @@ public class Population {
 			}
 		}
 	}
-
+	/**
+	 * @return a double of the mean of the cooperation mean  
+	 */
 	public double calculateCooperationMean() {
 		double sum = 0;
 		for (int i = 0; i < this.populations.length; i++) {
@@ -80,7 +91,9 @@ public class Population {
 		}
 		return sum / this.populations.length;
 	}
-
+	/**
+	 * @return the population count after several iterations
+	 */
 	@SuppressWarnings({ "unchecked" })
 	public Pair<String, Integer>[] getPopulationCounts() {
 		Pair<String, Integer>[] pop = (Pair<String, Integer>[]) (new Pair[3]);

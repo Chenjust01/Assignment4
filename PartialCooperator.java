@@ -10,7 +10,9 @@ import java.util.Random;
 public class PartialCooperator extends Organism{
 
 	double cooperationP;
-	
+	/**
+	 * Constructor 
+	 */
 	public PartialCooperator() {
 		super();
 		Random randomGenerator = new Random();
@@ -18,17 +20,25 @@ public class PartialCooperator extends Organism{
 		this.cooperationP = random; 
 	}
 	
+	/**
+	 * @return a string 
+	 */
 	@Override
 	public String getType() {
 		return "PartialCooperator"; 
 	}
-	
+	/**
+	 * @return create a new PartialCooperator object 
+	 */
 	@Override 
 	public Organism reproduce() {
 		this.energy = 0;
 		return new PartialCooperator();
 	}
 	
+	/**
+	 * @return return cooperationP 
+	 */
 	@Override
 	public double getCooperationProbability() {
 		return this.cooperationP;
